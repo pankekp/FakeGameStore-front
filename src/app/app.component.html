@@ -1,3 +1,13 @@
-<app-nav></app-nav>
-<app-home></app-home>
-<app-footer></app-footer>
+<nz-layout class="layout">
+  <nz-header>
+    <app-nav></app-nav>
+  </nz-header>
+  <nz-content style="padding:0 50px;">
+    <div style="background:#fff; padding: 24px; min-height: 280px;">
+      <app-home></app-home>
+    </div>
+  </nz-content>
+  <nz-footer>
+    <app-footer></app-footer>
+  </nz-footer>
+</nz-layout>

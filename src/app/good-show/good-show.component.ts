@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {GoodService} from '../service/good.service';
 import {Game} from '../pojo/game';
-import {Observable} from 'rxjs';
 import {Page} from '../pojo/page';
+import {environment} from '../../environments/environment';
 
 @Component({
   selector: 'app-good-show',
@@ -11,19 +11,30 @@ import {Page} from '../pojo/page';
 })
 export class GoodShowComponent implements OnInit {
 
-  private gamesStream: Observable<Game[]>;
-  games: Array<Game>;
-  private page: Page;
+  games: Game[];
+  total: number;
+  page: Page;
 
   constructor(private goodService: GoodService) {
-    this.page = {pageNum: 1, pageSize: 8};
-    this.gamesStream = this.goodService.getGames(this.page);
+    this.page = {
+      pageNum: 1,
+      pageSize: 8
+    };
   }
 
   ngOnInit() {
-    this.gamesStream.subscribe(
-      (data) => this.games = data
-    );
+    this.getGamesByPage(this.page);
+  }
+
+  getGamesByPage(page: Page) {
+    return this.goodService.getGames(page)
+      .subscribe(
+        (response) => {
+          response.games.map((game) => game.cover = environment.imgUrl + game.cover + '.jpg');
+          this.games = response.games;
+          this.total = response.total;
+        }
+      );
   }
 
 }

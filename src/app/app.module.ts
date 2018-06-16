@@ -1,6 +1,5 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
-
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {NavComponent} from './nav/nav.component';
@@ -11,7 +10,9 @@ import {GoodDetailComponent} from './good-detail/good-detail.component';
 import {HomeComponent} from './home/home.component';
 import {GoodService} from './service/good.service';
 import {HttpClientModule} from '@angular/common/http';
-import {MatGridListModule} from '@angular/material';
+
+import {NgZorroAntdModule} from 'ng-zorro-antd';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 
 @NgModule({
@@ -28,7 +29,8 @@ import {MatGridListModule} from '@angular/material';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    MatGridListModule
+    NgZorroAntdModule,
+    BrowserAnimationsModule
   ],
   providers: [
     {provide: GoodService, useClass: GoodService}

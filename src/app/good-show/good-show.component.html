@@ -1,5 +1,27 @@
-<mat-grid-list [cols]="4">
-  <mat-grid-tile *ngFor="let game of games">
-    {{game.name}}
-  </mat-grid-tile>
-</mat-grid-list>
+<div nz-row>
+  <div nz-col [nzSpan]="6" *ngFor="let game of games">
+    <nz-card style="width:250px"
+             [nzCover]="cover"
+             [nzActions]="[detail]">
+      <nz-card-meta
+        [nzTitle]="game.name"
+        [nzDescription]="'$'+game.price"></nz-card-meta>
+    </nz-card>
+    <ng-template #cover>
+      <img [src]="game.cover"/>
+    </ng-template>
+    <ng-template #detail>
+      <i class="anticon anticon-info-circle-o"></i>
+    </ng-template>
+    <br>
+    <br>
+  </div>
+</div>
+<div nz-row>
+  <div nz-col></div>
+  <nz-pagination nzShowSizeChanger
+                 [nzPageIndex]="page.pageNum"
+                 [nzTotal]="total"
+                 [nzPageSize]="page.pageSize"></nz-pagination>
+</div>
+
