@@ -1,6 +1,6 @@
 <div nz-row>
   <div nz-col [nzSpan]="6" *ngFor="let game of games">
-    <nz-card style="width:250px"
+    <nz-card style="width:275px"
              [nzCover]="cover"
              [nzActions]="[detail]">
       <nz-card-meta
@@ -22,6 +22,9 @@
   <nz-pagination nzShowSizeChanger
                  [nzPageIndex]="page.pageNum"
                  [nzTotal]="total"
-                 [nzPageSize]="page.pageSize"></nz-pagination>
+                 [nzPageSize]="page.pageSize"
+                 [nzPageSizeOptions]="pageSizeOptions"
+                 (nzPageIndexChange)="pageIndexChange($event)"
+                 (nzPageSizeChange)="pageSizeChange($event)"></nz-pagination>
 </div>
 

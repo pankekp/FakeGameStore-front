@@ -14,12 +14,14 @@ export class GoodShowComponent implements OnInit {
   games: Game[];
   total: number;
   page: Page;
+  pageSizeOptions: number[];
 
   constructor(private goodService: GoodService) {
     this.page = {
       pageNum: 1,
       pageSize: 8
     };
+    this.pageSizeOptions = [4, 8, 12];
   }
 
   ngOnInit() {
@@ -35,6 +37,15 @@ export class GoodShowComponent implements OnInit {
           this.total = response.total;
         }
       );
+  }
+
+  pageIndexChange(index: number) {
+    this.page.pageNum = index;
+    this.getGamesByPage(this.page);
+  }
+
+  pageSizeChange(size: number) {
+    this.page.pageSize = size;
   }
 
 }
