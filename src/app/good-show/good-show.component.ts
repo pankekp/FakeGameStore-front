@@ -31,10 +31,10 @@ export class GoodShowComponent implements OnInit {
   getGamesByPage(page: Page) {
     return this.goodService.getGames(page)
       .subscribe(
-        (response) => {
-          response.games.map((game) => game.cover = environment.imgUrl + game.cover + '.jpg');
-          this.games = response.games;
-          this.total = response.total;
+        (data) => {
+          data.games.map((game) => game.cover = environment.imgUrl + game.cover + '.jpg');
+          this.games = data.games;
+          this.total = data.total;
         }
       );
   }

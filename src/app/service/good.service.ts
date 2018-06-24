@@ -15,8 +15,8 @@ export class GoodService {
 
   getGames(page: Page): Observable<Games> {
     const params = new HttpParams()
-      .set('pageNum', String(page.pageNum))
-      .set('pageSize', String(page.pageSize));
-    return this.http.get<Games>(environment.url + 'findGames', {params});
+      .set('pageSize', String(page.pageSize))
+      .set('pageNum', String(page.pageNum));
+    return this.http.get<Games>(environment.url + 'findGames', {params: params});
   }
 }

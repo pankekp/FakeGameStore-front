@@ -1,0 +1,28 @@
+<form nz-form [formGroup]="loginForm" class="login-form" (ngSubmit)="submitForm()">
+  <nz-form-item>
+    <nz-form-control>
+      <nz-input-group nzPrefixIcon="anticon anticon-user">
+        <input type="text" nz-input formControlName="username" placeholder="Username">
+      </nz-input-group>
+      <nz-form-explain *ngIf="loginForm.get('username').dirty && loginForm.get('username').invalid">
+        Please input your username!
+      </nz-form-explain>
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-control>
+      <nz-input-group nzPrefixIcon="anticon anticon-lock">
+        <input type="password" nz-input formControlName="password" placeholder="Password">
+      </nz-input-group>
+      <nz-form-explain *ngIf="loginForm.get('password').dirty && loginForm.get('password').invalid">
+        Please input your Password!
+      </nz-form-explain>
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-control>
+      <button nz-button class="login-form-button" [nzType]="'primary'">Log in</button>
+    </nz-form-control>
+  </nz-form-item>
+</form>
+

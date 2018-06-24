@@ -1,8 +1,28 @@
 <div class="logo"></div>
 <ul nz-menu [nzTheme]="'dark'" [nzMode]="'horizontal'" style="line-height: 64px;">
-  <li nz-menu-item>Home</li>
-  <li nz-menu-item>Favorite</li>
-  <li nz-menu-item>Cart</li>
-  <li nz-menu-item>Register</li>
-  <li nz-menu-item>Login</li>
+  <li nz-menu-item [routerLink]="['/home']">Home</li>
+  <li nz-menu-item [routerLink]="['/cart']" *ngIf="user.username!=''">Cart</li>
+  <li nz-menu-item *ngIf="user.username!=''">
+    <nz-dropdown>
+      <div nz-dropdown>
+        {{user.username}}<i class="anticon anticon-down"></i>
+      </div>
+      <ul nz-menu nzSelectable>
+        <li nz-menu-item>
+          <a [routerLink]="['/favorite']">favorite</a>
+        </li>
+        <li nz-menu-item>
+          <a [routerLink]="['/contact']">contact-info</a>
+        </li>
+        <li nz-menu-item>
+          <a [routerLink]="['/order']">order-info</a>
+        </li>
+        <li nz-menu-item>
+          <a (click)="logout()">logout</a>
+        </li>
+      </ul>
+    </nz-dropdown>
+  </li>
+  <li nz-menu-item [routerLink]="['/register']" *ngIf="user.username==''">Register</li>
+  <li nz-menu-item [routerLink]="['/login']" *ngIf="user.username==''">Login</li>
 </ul>

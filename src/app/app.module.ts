@@ -13,7 +13,14 @@ import {HttpClientModule} from '@angular/common/http';
 
 import {NgZorroAntdModule} from 'ng-zorro-antd';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import { SearchComponent } from './search/search.component';
+import {SearchComponent} from './search/search.component';
+import {FavoriteComponent} from './favorite/favorite.component';
+import {CartComponent} from './cart/cart.component';
+import {LoginComponent} from './login/login.component';
+import {ReactiveFormsModule} from '@angular/forms';
+import {RegisterComponent} from './register/register.component';
+import { ContactInfoComponent } from './contact-info/contact-info.component';
+import { OrderInfoComponent } from './order-info/order-info.component';
 
 
 @NgModule({
@@ -25,14 +32,21 @@ import { SearchComponent } from './search/search.component';
     GoodShowComponent,
     GoodDetailComponent,
     HomeComponent,
-    SearchComponent
+    SearchComponent,
+    FavoriteComponent,
+    CartComponent,
+    LoginComponent,
+    RegisterComponent,
+    ContactInfoComponent,
+    OrderInfoComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     NgZorroAntdModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    ReactiveFormsModule
   ],
   providers: [
     {provide: GoodService, useClass: GoodService}
