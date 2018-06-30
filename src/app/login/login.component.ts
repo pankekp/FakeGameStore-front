@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {UserInfoShareService} from '../service/user-info-share.service';
+import {User} from '../pojo/user';
 
 @Component({
   selector: 'app-login',
@@ -23,8 +24,11 @@ export class LoginComponent implements OnInit {
 
   submitForm(): void {
     if (this.loginForm.valid) {
-      console.log(this.loginForm.value);
-      this.userInfoShareService.updateUserInfo(this.loginForm.value);
+      const user = {
+        id: 1,
+        username: this.loginForm.value.username
+      };
+      this.userInfoShareService.updateUserInfo(user);
     } else {
       for (const key of Object.keys(this.loginForm.controls)) {
         this.loginForm.controls[key].markAsDirty();
