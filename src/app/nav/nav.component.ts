@@ -18,7 +18,8 @@ export class NavComponent implements OnInit, OnDestroy {
               private infoStorageService: InfoStorageService) {
     this.user = {
       id: 0,
-      username: ''
+      username: '',
+      password: ''
     };
     if (this.infoStorageService.getUser() != null) {
       this.user = this.infoStorageService.getUser();

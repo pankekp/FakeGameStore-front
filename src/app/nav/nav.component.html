@@ -1,7 +1,6 @@
 <div class="logo"></div>
 <ul nz-menu [nzTheme]="'dark'" [nzMode]="'horizontal'" style="line-height: 64px;">
   <li nz-menu-item [routerLink]="['/home']">Home</li>
-  <li nz-menu-item [routerLink]="['/cart']" *ngIf="user.id!=0">Cart</li>
   <li nz-menu-item *ngIf="user.id!=0">
     <nz-dropdown>
       <div nz-dropdown>
@@ -9,10 +8,7 @@
       </div>
       <ul nz-menu nzSelectable>
         <li nz-menu-item>
-          <a [routerLink]="['/favorite']">favorite</a>
-        </li>
-        <li nz-menu-item>
-          <a [routerLink]="['/contact']">contact-info</a>
+          <a [routerLink]="['/cart']">cart</a>
         </li>
         <li nz-menu-item>
           <a [routerLink]="['/order']">order-info</a>

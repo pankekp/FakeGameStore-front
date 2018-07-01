@@ -9,18 +9,18 @@ import {GoodShowComponent} from './good-show/good-show.component';
 import {GoodDetailComponent} from './good-detail/good-detail.component';
 import {HomeComponent} from './home/home.component';
 import {GoodService} from './service/good.service';
-import {HttpClientModule} from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 
 import {NgZorroAntdModule} from 'ng-zorro-antd';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {SearchComponent} from './search/search.component';
-import {FavoriteComponent} from './favorite/favorite.component';
 import {CartComponent} from './cart/cart.component';
 import {LoginComponent} from './login/login.component';
 import {ReactiveFormsModule} from '@angular/forms';
 import {RegisterComponent} from './register/register.component';
-import { ContactInfoComponent } from './contact-info/contact-info.component';
-import { OrderInfoComponent } from './order-info/order-info.component';
+import {OrderInfoComponent} from './order-info/order-info.component';
+import {UserService} from './service/user.service';
+import {ResponseProcessorService} from './service/response-processor.service';
 
 
 @NgModule({
@@ -33,11 +33,9 @@ import { OrderInfoComponent } from './order-info/order-info.component';
     GoodDetailComponent,
     HomeComponent,
     SearchComponent,
-    FavoriteComponent,
     CartComponent,
     LoginComponent,
     RegisterComponent,
-    ContactInfoComponent,
     OrderInfoComponent
   ],
   imports: [
@@ -49,7 +47,9 @@ import { OrderInfoComponent } from './order-info/order-info.component';
     ReactiveFormsModule
   ],
   providers: [
-    {provide: GoodService, useClass: GoodService}
+    {provide: GoodService, useClass: GoodService},
+    {provide: UserService, useClass: UserService},
+    {provide: HTTP_INTERCEPTORS, useClass: ResponseProcessorService, multi: true}
   ],
   bootstrap: [AppComponent]
 })

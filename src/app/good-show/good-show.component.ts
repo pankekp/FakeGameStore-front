@@ -29,7 +29,7 @@ export class GoodShowComponent implements OnInit {
   }
 
   getGamesByPage(page: Page) {
-    return this.goodService.getGames(page)
+    this.goodService.getGames(page)
       .subscribe(
         (data) => {
           data.games.map((game) => game.cover = environment.imgUrl + game.cover + '.jpg');

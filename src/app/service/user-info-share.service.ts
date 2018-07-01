@@ -18,7 +18,8 @@ export class UserInfoShareService {
     this.subject = new Subject<User>();
     this.logoutUser = {
       id: 0,
-      username: ''
+      username: '',
+      password: ''
     };
   }
 
