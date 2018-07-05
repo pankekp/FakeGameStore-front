@@ -1,9 +1,9 @@
 import {Component, OnInit} from '@angular/core';
-import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {UserInfoShareService} from '../service/user-info-share.service';
-import {User} from '../pojo/user';
 import {UserService} from '../service/user.service';
 import {NzMessageService} from 'ng-zorro-antd';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -17,7 +17,8 @@ export class LoginComponent implements OnInit {
   constructor(private fb: FormBuilder,
               private userInfoShareService: UserInfoShareService,
               private userService: UserService,
-              private messageService: NzMessageService) {
+              private messageService: NzMessageService,
+              private router: Router) {
     this.loginForm = this.fb.group({
       username: [null, [Validators.required]],
       password: [null, [Validators.required]],
@@ -33,6 +34,7 @@ export class LoginComponent implements OnInit {
         .subscribe(
           (res) => {
             this.userInfoShareService.updateUserInfo(res);
+            this.router.navigate(['/home']);
           },
           (error) => {
             this.messageService.create('error', error);

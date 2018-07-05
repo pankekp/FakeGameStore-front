@@ -11,7 +11,8 @@ const routes: Routes = [
   {path: 'cart', component: CartComponent},
   {path: 'register', component: RegisterComponent},
   {path: 'login', component: LoginComponent},
-  {path: 'order', component: OrderInfoComponent}
+  {path: 'order', component: OrderInfoComponent},
+  {path: '', redirectTo: '/home', pathMatch: 'full'}
 ];
 
 @NgModule({

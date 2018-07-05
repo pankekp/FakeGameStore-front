@@ -23,6 +23,8 @@ export class ResponseProcessorService implements HttpInterceptor {
               const errorInfo: Error = res.error;
               errorMessage = errorInfo.title + ' : ' + errorInfo.message;
               break;
+            case 400:
+              errorMessage = 'operating failed, please check your input and try again later';
           }
           return throwError(errorMessage);
         })
