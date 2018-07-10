@@ -1,0 +1,9 @@
+.img {
+  height: 480px;
+  width: 360px;
+}
+
+[nz-button] {
+  margin-right: 8px;
+  margin-bottom: 12px;
+}

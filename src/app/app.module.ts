@@ -13,10 +13,9 @@ import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 
 import {NgZorroAntdModule} from 'ng-zorro-antd';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {SearchComponent} from './search/search.component';
 import {CartComponent} from './cart/cart.component';
 import {LoginComponent} from './login/login.component';
-import {ReactiveFormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {RegisterComponent} from './register/register.component';
 import {OrderInfoComponent} from './order-info/order-info.component';
 import {UserService} from './service/user.service';
@@ -32,7 +31,6 @@ import {ResponseProcessorService} from './service/response-processor.service';
     GoodShowComponent,
     GoodDetailComponent,
     HomeComponent,
-    SearchComponent,
     CartComponent,
     LoginComponent,
     RegisterComponent,
@@ -44,7 +42,8 @@ import {ResponseProcessorService} from './service/response-processor.service';
     HttpClientModule,
     NgZorroAntdModule,
     BrowserAnimationsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FormsModule
   ],
   providers: [
     {provide: GoodService, useClass: GoodService},

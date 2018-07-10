@@ -28,7 +28,7 @@ export class GoodShowComponent implements OnInit {
     this.getGamesByPage(this.page);
   }
 
-  getGamesByPage(page: Page) {
+  getGamesByPage(page: Page): void {
     this.goodService.getGames(page)
       .subscribe(
         (data) => {
@@ -39,13 +39,12 @@ export class GoodShowComponent implements OnInit {
       );
   }
 
-  pageIndexChange(index: number) {
+  pageIndexChange(index: number): void {
     this.page.pageNum = index;
     this.getGamesByPage(this.page);
   }
 
-  pageSizeChange(size: number) {
+  pageSizeChange(size: number): void {
     this.page.pageSize = size;
   }
-
 }

@@ -4,6 +4,9 @@ import {Observable} from 'rxjs';
 import {environment} from '../../environments/environment';
 import {Page} from '../pojo/page';
 import {Games} from '../pojo/games';
+import {Game} from '../pojo/game';
+import {map} from 'rxjs/operators';
+import {PathResolver} from 'codelyzer/angular/urlResolvers/pathResolver';
 
 @Injectable({
   providedIn: 'root'
@@ -18,5 +21,9 @@ export class GoodService {
       .set('pageSize', String(page.pageSize))
       .set('pageNum', String(page.pageNum));
     return this.http.get<Games>(environment.url + 'findGames', {params: params});
+  }
+
+  getGame(gameId: number): Observable<Game> {
+    return this.http.get<Game>(environment.url + 'findGame/' + gameId);
   }
 }

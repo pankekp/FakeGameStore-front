@@ -24,7 +24,7 @@ export class ResponseProcessorService implements HttpInterceptor {
               errorMessage = errorInfo.title + ' : ' + errorInfo.message;
               break;
             case 400:
-              errorMessage = 'operating failed, please check your input and try again later';
+              errorMessage = 'Operating failed, please check your input and try again later';
           }
           return throwError(errorMessage);
         })

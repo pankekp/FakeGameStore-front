@@ -1,3 +1,37 @@
-<p>
-  good-detail works!
-</p>
+<div nz-row>
+  <div nz-col nzSpan="12">
+    <img [src]="game?.cover" class="img"/>
+  </div>
+  <div nz-col nzSpan="12">
+    <div nz-row>
+      <div nz-col><h2>{{game?.name}}</h2></div>
+    </div>
+    <br>
+    <div nz-row>
+      <div nz-col>Price : ${{game?.price}}</div>
+    </div>
+    <br>
+    <div nz-row>
+      <div nz-col>Stock : {{game?.stock}}</div>
+    </div>
+    <br>
+    <div nz-row>
+      <div nz-col [ngSwitch]="status">
+        <div *ngSwitchCase="'init'">
+          <button nz-button nzType="primary" (click)="SelectNum()">Add to cart</button>
+        </div>
+        <div *ngSwitchCase="'select'">
+          <button nz-button nzType="primary" (click)="SubmitNum()">Submit</button>
+          <nz-input-number [(ngModel)]="addNum" [nzMin]="1" [nzMax]="game?.stock" [nzStep]="1"></nz-input-number>
+        </div>
+      </div>
+    </div>
+    <br>
+    <div nz-row>
+      <div nz-col>
+        <p>Description :</p>
+        {{game?.desc}}
+      </div>
+    </div>
+  </div>
+</div>

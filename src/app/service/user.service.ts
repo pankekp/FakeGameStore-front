@@ -3,6 +3,8 @@ import {Observable} from 'rxjs';
 import {HttpClient, HttpParams} from '@angular/common/http';
 import {environment} from '../../environments/environment';
 import {User} from '../pojo/user';
+import {Cart} from '../pojo/Cart';
+import {C} from '@angular/core/src/render3';
 
 @Injectable({
   providedIn: 'root'
@@ -27,5 +29,9 @@ export class UserService {
 
   register(user: User): Observable<User> {
     return this.http.post<User>(environment.url + 'register', user);
+  }
+
+  addToCart(cart: Cart): Observable<Cart> {
+    return this.http.post<Cart>(environment.url + 'addToCart', cart);
   }
 }
