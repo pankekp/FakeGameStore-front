@@ -1,10 +1,12 @@
 import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs';
-import {HttpClient, HttpParams} from '@angular/common/http';
+import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
 import {environment} from '../../environments/environment';
 import {User} from '../pojo/user';
-import {Cart} from '../pojo/Cart';
+import {Cart} from '../pojo/cart';
 import {C} from '@angular/core/src/render3';
+import {CartItem} from '../pojo/cart-item';
+import {Success} from '../pojo/success';
 
 @Injectable({
   providedIn: 'root'
@@ -33,5 +35,19 @@ export class UserService {
 
   addToCart(cart: Cart): Observable<Cart> {
     return this.http.post<Cart>(environment.url + 'addToCart', cart);
+  }
+
+  getCart(user: User): Observable<CartItem[]> {
+    const params = new HttpParams()
+      .set('id', String(user.id));
+    return this.http.get<CartItem[]>(environment.url + 'getCart', {params: params});
+  }
+
+  updateCart(cartItems: CartItem[]): Observable<Success> {
+    return this.http.put<Success>(environment.url + 'updateCart', cartItems);
+  }
+
+  deleteCart(cartItemId: number): Observable<Success> {
+    return this.http.delete<Success>(environment.url + 'deleteCart/' + cartItemId);
   }
 }

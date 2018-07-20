@@ -3,6 +3,7 @@ import {User} from '../pojo/user';
 import {UserInfoShareService} from '../service/user-info-share.service';
 import {Observable, Observer, Subscription} from 'rxjs';
 import {InfoStorageService} from '../service/info-storage.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-nav',
@@ -15,7 +16,8 @@ export class NavComponent implements OnInit, OnDestroy {
   private userSubscription: Subscription;
 
   constructor(private userInfoShareService: UserInfoShareService,
-              private infoStorageService: InfoStorageService) {
+              private infoStorageService: InfoStorageService,
+              private router: Router) {
     this.user = {
       id: 0,
       username: '',
@@ -36,12 +38,9 @@ export class NavComponent implements OnInit, OnDestroy {
     this.userSubscription.unsubscribe();
   }
 
-  login() {
-
-  }
-
   logout() {
     this.infoStorageService.clearUser();
     this.userInfoShareService.clearUserInfo();
+    this.router.navigate(['/home']);
   }
 }

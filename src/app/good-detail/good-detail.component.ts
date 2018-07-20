@@ -7,7 +7,7 @@ import {environment} from '../../environments/environment';
 import {InfoStorageService} from '../service/info-storage.service';
 import {NzMessageService} from 'ng-zorro-antd';
 import {UserService} from '../service/user.service';
-import {Cart} from '../pojo/Cart';
+import {Cart} from '../pojo/cart';
 
 @Component({
   selector: 'app-good-detail',

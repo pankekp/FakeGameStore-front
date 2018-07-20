@@ -1,3 +1,23 @@
-<p>
-  cart works!
-</p>
+<nz-list [nzDataSource]="cartItems" [nzRenderItem]="item" [nzItemLayout]="'horizontal'">
+  <ng-template #item let-item>
+    <nz-list-item [nzActions]="[price,stock,num,delete]">
+      <nz-list-item-meta [nzTitle]="nzTitle">
+        <ng-template #nzTitle>
+          <a [routerLink]="['/detail',item.game.id]">{{item.game.name}}</a>
+        </ng-template>
+      </nz-list-item-meta>
+      <ng-template #price>${{item.game.price}}</ng-template>
+      <ng-template #stock>stock: {{item.game.stock}}</ng-template>
+      <ng-template #num>
+        <nz-input-number [(ngModel)]="item.gameNum" [nzMin]="1" [nzMax]="item.game.stock"
+                         [nzStep]="1"></nz-input-number>
+      </ng-template>
+      <ng-template #delete>
+        <i class="anticon anticon-delete" (click)="deleteCartItem(item.game.id)"></i>
+      </ng-template>
+    </nz-list-item>
+  </ng-template>
+</nz-list>
+<br>
+<button nz-button nzType="primary" (click)="submitChange()">Submit Change</button>
+<button nz-button nzType="primary" (click)="next()">Next</button>
