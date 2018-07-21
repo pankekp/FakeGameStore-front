@@ -4,6 +4,8 @@ import {UserService} from '../service/user.service';
 import {InfoStorageService} from '../service/info-storage.service';
 import {User} from '../pojo/user';
 import {NzMessageService} from 'ng-zorro-antd';
+import {Router} from '@angular/router';
+import {el} from '@angular/platform-browser/testing/src/browser_util';
 
 @Component({
   selector: 'app-cart',
@@ -17,7 +19,8 @@ export class CartComponent implements OnInit {
 
   constructor(private userService: UserService,
               private infoStorageService: InfoStorageService,
-              private messageService: NzMessageService) {
+              private messageService: NzMessageService,
+              private router: Router) {
     this.cartItems = null;
     this.user = this.infoStorageService.getUser();
   }
@@ -28,13 +31,17 @@ export class CartComponent implements OnInit {
       username: '',
       password: ''
     };
-    this.userService.getCart(user)
-      .subscribe(
-        (data) => {
-          this.cartItems = data;
-          this.infoStorageService.saveCart(this.cartItems);
-        }
-      );
+    if (this.infoStorageService.getCart() != null) {
+      this.cartItems = this.infoStorageService.getCart();
+    } else {
+      this.userService.getCart(user)
+        .subscribe(
+          (data) => {
+            this.cartItems = data;
+            this.infoStorageService.saveCart(this.cartItems);
+          }
+        );
+    }
   }
 
   deleteCartItem(cartItemId: number) {
@@ -66,6 +73,6 @@ export class CartComponent implements OnInit {
   }
 
   next() {
-
+    this.router.navigate(['/confirm']);
   }
 }

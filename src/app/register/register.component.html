@@ -24,8 +24,7 @@
   <nz-form-item>
     <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="password" nzRequired>Password</nz-form-label>
     <nz-form-control [nzSm]="14" [nzXs]="24">
-      <input nz-input type="password" id="password" formControlName="password"
-             (ngModelChange)="updateConfirmValidator()">
+      <input nz-input type="password" id="password" formControlName="password">
       <nz-form-explain *ngIf="registerForm.get('password').dirty && registerForm.get('password').invalid">
         <ng-container *ngIf="registerForm.get('password').hasError('required')">
           Please input your password!

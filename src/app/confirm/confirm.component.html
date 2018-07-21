@@ -1,0 +1,83 @@
+total: ${{total|number:'1.0-2'}}
+<hr>
+<nz-list [nzDataSource]="cartItems" [nzRenderItem]="item" [nzItemLayout]="'horizontal'">
+  <ng-template #item let-item>
+    <nz-list-item [nzActions]="[price,num,total]">
+      <nz-list-item-meta [nzTitle]="nzTitle">
+        <ng-template #nzTitle>
+          <a [routerLink]="['/detail',item.game.id]">{{item.game.name}}</a>
+        </ng-template>
+      </nz-list-item-meta>
+      <ng-template #price>${{item.game.price}}</ng-template>
+      <ng-template #num>num: {{item.gameNum}}</ng-template>
+      <ng-template #total>itemTotal: ${{item.itemTotal}}</ng-template>
+    </nz-list-item>
+  </ng-template>
+</nz-list>
+
+<hr>
+
+<form nz-form [formGroup]="contactInfoForm" class="contactInfo-form" (ngSubmit)="submitForm()">
+  <nz-form-item>
+    <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="name">Name</nz-form-label>
+    <nz-form-control [nzSm]="14" [nzXs]="24">
+      <input nz-input formControlName="name" id="name">
+      <nz-form-explain *ngIf="contactInfoForm.get('name').dirty && contactInfoForm.get('name').invalid">
+        <ng-container *ngIf="contactInfoForm.get('name').hasError('required')">
+          Please input your name!
+        </ng-container>
+      </nz-form-explain>
+    </nz-form-control>
+  </nz-form-item>
+
+  <nz-form-item>
+    <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="phone" nzRequired>Phone</nz-form-label>
+    <nz-form-control [nzSm]="14" [nzXs]="24">
+      <input nz-input type="phone" id="phone" formControlName="phone">
+      <nz-form-explain *ngIf="contactInfoForm.get('phone').dirty && contactInfoForm.get('phone').invalid">
+        <ng-container *ngIf="contactInfoForm.get('phone').hasError('required')">
+          Please input your phone!
+        </ng-container>
+        <ng-container *ngIf="contactInfoForm.get('phone').hasError('pattern')">
+          The format of your phone is incorrect!
+        </ng-container>
+      </nz-form-explain>
+    </nz-form-control>
+  </nz-form-item>
+
+  <nz-form-item>
+    <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="address" nzRequired>Address</nz-form-label>
+    <nz-form-control [nzSm]="14" [nzXs]="24">
+      <input nz-input type="address" formControlName="address" id="address">
+      <nz-form-explain
+        *ngIf="contactInfoForm.get('address').dirty && contactInfoForm.get('address').invalid">
+        <ng-container *ngIf="contactInfoForm.get('address').hasError('required')">
+          Please input your address!
+        </ng-container>
+      </nz-form-explain>
+    </nz-form-control>
+  </nz-form-item>
+
+  <nz-form-item>
+    <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="postcode" nzRequired>Postcode</nz-form-label>
+    <nz-form-control [nzSm]="14" [nzXs]="24">
+      <input nz-input type="postcode" formControlName="postcode" id="postcode">
+      <nz-form-explain
+        *ngIf="contactInfoForm.get('postcode').dirty && contactInfoForm.get('postcode').invalid">
+        <ng-container *ngIf="contactInfoForm.get('postcode').hasError('required')">
+          Please input your address!
+        </ng-container>
+        <ng-container *ngIf="contactInfoForm.get('postcode').hasError('pattern')">
+          The format of your postcode is incorrect!
+        </ng-container>
+      </nz-form-explain>
+    </nz-form-control>
+  </nz-form-item>
+
+  <nz-form-item nz-row style="margin-bottom:8px;">
+    <nz-form-control [nzSpan]="14" [nzOffset]="6">
+      <button nz-button nzType="primary">Submit the order</button>
+    </nz-form-control>
+  </nz-form-item>
+</form>
+

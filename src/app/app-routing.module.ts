@@ -6,6 +6,7 @@ import {LoginComponent} from './login/login.component';
 import {RegisterComponent} from './register/register.component';
 import {OrderInfoComponent} from './order-info/order-info.component';
 import {GoodDetailComponent} from './good-detail/good-detail.component';
+import {ConfirmComponent} from './confirm/confirm.component';
 
 const routes: Routes = [
   {path: 'home', component: HomeComponent},
@@ -14,6 +15,7 @@ const routes: Routes = [
   {path: 'register', component: RegisterComponent},
   {path: 'login', component: LoginComponent},
   {path: 'order', component: OrderInfoComponent},
+  {path: 'confirm', component: ConfirmComponent},
   {path: '', redirectTo: '/home', pathMatch: 'full'}
 ];
 

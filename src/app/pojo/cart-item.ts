@@ -4,4 +4,5 @@ export interface CartItem {
   game: Game;
   gameNum: number;
   itemId: number;
+  itemTotal: number;
 }

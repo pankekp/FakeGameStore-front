@@ -20,6 +20,7 @@ import {RegisterComponent} from './register/register.component';
 import {OrderInfoComponent} from './order-info/order-info.component';
 import {UserService} from './service/user.service';
 import {ResponseProcessorService} from './service/response-processor.service';
+import { ConfirmComponent } from './confirm/confirm.component';
 
 
 @NgModule({
@@ -34,7 +35,8 @@ import {ResponseProcessorService} from './service/response-processor.service';
     CartComponent,
     LoginComponent,
     RegisterComponent,
-    OrderInfoComponent
+    OrderInfoComponent,
+    ConfirmComponent
   ],
   imports: [
     BrowserModule,
