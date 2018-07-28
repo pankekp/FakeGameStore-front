@@ -22,8 +22,7 @@ export class ConfirmComponent implements OnInit {
   constructor(private userService: UserService,
               private infoStorageService: InfoStorageService,
               private fb: FormBuilder,
-              private router: Router,
-              private messageService: NzMessageService) {
+              private router: Router) {
     this.cartItems = null;
     this.user = this.infoStorageService.getUser();
     this.total = 0;
@@ -66,6 +65,13 @@ export class ConfirmComponent implements OnInit {
   submitForm(): void {
     if (this.contactInfoForm.valid) {
       console.dir(this.contactInfoForm.value);
+      this.userService.addOrder(this.user.id, this.contactInfoForm.value)
+        .subscribe(
+          () => {
+            this.infoStorageService.saveCart(null);
+            this.router.navigate(['/confirmEnd']);
+          }
+        );
     } else {
       for (const key of Object.keys(this.contactInfoForm.controls)) {
         this.contactInfoForm.controls[key].markAsDirty();

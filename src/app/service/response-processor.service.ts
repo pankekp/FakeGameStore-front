@@ -20,12 +20,16 @@ export class ResponseProcessorService implements HttpInterceptor {
           let errorMessage = '';
           switch (res.status) {
             case 404:
+              console.dir(res.error);
               const errorInfo: Error = res.error;
               errorMessage = errorInfo.title + ' : ' + errorInfo.message;
               break;
             case 400:
+              console.dir(res.error);
               errorMessage = 'Operating failed, please check your input and try again later';
+              break;
           }
+          // 抛出的是用来提示用户的errorInfo
           return throwError(errorMessage);
         })
       );

@@ -45,10 +45,14 @@ export class CartComponent implements OnInit {
   }
 
   deleteCartItem(cartItemId: number) {
+    console.dir(cartItemId);
     this.userService.deleteCart(cartItemId)
       .subscribe(
         (data) => {
           this.cartItems = this.cartItems.filter((cartItem) => cartItem.itemId !== cartItemId);
+          if (this.cartItems.length === 0) {
+            this.cartItems = null;
+          }
           this.infoStorageService.saveCart(this.cartItems);
           this.messageService.create('success', data.title);
         },

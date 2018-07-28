@@ -7,6 +7,7 @@ import {Cart} from '../pojo/cart';
 import {C} from '@angular/core/src/render3';
 import {CartItem} from '../pojo/cart-item';
 import {Success} from '../pojo/success';
+import {ContactInfo} from '../pojo/contact-info';
 
 @Injectable({
   providedIn: 'root'
@@ -49,5 +50,14 @@ export class UserService {
 
   deleteCart(cartItemId: number): Observable<Success> {
     return this.http.delete<Success>(environment.url + 'deleteCart/' + cartItemId);
+  }
+
+  addOrder(userId: number, contactInfo: ContactInfo): Observable<Success> {
+    const obj = {
+      userId: userId,
+      contactInfo: contactInfo
+    };
+    console.dir(obj);
+    return this.http.post<Success>(environment.url + 'addOrder', obj);
   }
 }

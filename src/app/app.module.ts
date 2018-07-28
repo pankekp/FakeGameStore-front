@@ -21,6 +21,7 @@ import {OrderInfoComponent} from './order-info/order-info.component';
 import {UserService} from './service/user.service';
 import {ResponseProcessorService} from './service/response-processor.service';
 import { ConfirmComponent } from './confirm/confirm.component';
+import { ConfirmEndComponent } from './confirm-end/confirm-end.component';
 
 
 @NgModule({
@@ -36,7 +37,8 @@ import { ConfirmComponent } from './confirm/confirm.component';
     LoginComponent,
     RegisterComponent,
     OrderInfoComponent,
-    ConfirmComponent
+    ConfirmComponent,
+    ConfirmEndComponent
   ],
   imports: [
     BrowserModule,
