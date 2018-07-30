@@ -5,8 +5,6 @@ import {environment} from '../../environments/environment';
 import {Page} from '../pojo/page';
 import {Games} from '../pojo/games';
 import {Game} from '../pojo/game';
-import {map} from 'rxjs/operators';
-import {PathResolver} from 'codelyzer/angular/urlResolvers/pathResolver';
 
 @Injectable({
   providedIn: 'root'

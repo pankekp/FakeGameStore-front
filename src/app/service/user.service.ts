@@ -8,6 +8,7 @@ import {C} from '@angular/core/src/render3';
 import {CartItem} from '../pojo/cart-item';
 import {Success} from '../pojo/success';
 import {ContactInfo} from '../pojo/contact-info';
+import {Orders} from '../pojo/orders';
 
 @Injectable({
   providedIn: 'root'
@@ -59,5 +60,9 @@ export class UserService {
     };
     console.dir(obj);
     return this.http.post<Success>(environment.url + 'addOrder', obj);
+  }
+
+  getOrder(userId: number): Observable<Orders[]> {
+    return this.http.get<Orders[]>(environment.url + 'getOrder/' + userId);
   }
 }

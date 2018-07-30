@@ -5,7 +5,6 @@ import {InfoStorageService} from '../service/info-storage.service';
 import {User} from '../pojo/user';
 import {NzMessageService} from 'ng-zorro-antd';
 import {Router} from '@angular/router';
-import {el} from '@angular/platform-browser/testing/src/browser_util';
 
 @Component({
   selector: 'app-cart',

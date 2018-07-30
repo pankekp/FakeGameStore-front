@@ -1,3 +1,16 @@
-<p>
-  order-info works!
-</p>
+<nz-card [nzTitle]="order.ordersTime.orderTime" *ngFor="let order of ordersList">
+  <p style="font-size:14px;color:rgba(0, 0, 0, 0.85);margin-bottom:16px;font-weight: 500;">
+    Name:{{order.contactInfoList[0].name}}
+    <br>
+    Phone:{{order.contactInfoList[0].phone}}
+    <br>
+    Address:{{order.contactInfoList[0].address}}
+    <br>
+    Postcode:{{order.contactInfoList[0].postcode}}
+  </p>
+  <nz-card nzType="inner" [nzTitle]="item.game.name" *ngFor="let item of order.cartItemList">
+    Num:{{item.gameNum}}
+    <br>
+    Price:{{item.game.price}}
+  </nz-card>
+</nz-card>
