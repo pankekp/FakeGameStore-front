@@ -4,7 +4,6 @@ import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {NavComponent} from './nav/nav.component';
 import {FooterComponent} from './footer/footer.component';
-import {SecKillComponent} from './sec-kill/sec-kill.component';
 import {GoodShowComponent} from './good-show/good-show.component';
 import {GoodDetailComponent} from './good-detail/good-detail.component';
 import {HomeComponent} from './home/home.component';
@@ -20,8 +19,8 @@ import {RegisterComponent} from './register/register.component';
 import {OrderInfoComponent} from './order-info/order-info.component';
 import {UserService} from './service/user.service';
 import {ResponseProcessorService} from './service/response-processor.service';
-import { ConfirmComponent } from './confirm/confirm.component';
-import { ConfirmEndComponent } from './confirm-end/confirm-end.component';
+import {ConfirmComponent} from './confirm/confirm.component';
+import {ConfirmEndComponent} from './confirm-end/confirm-end.component';
 
 
 @NgModule({
@@ -29,7 +28,6 @@ import { ConfirmEndComponent } from './confirm-end/confirm-end.component';
     AppComponent,
     NavComponent,
     FooterComponent,
-    SecKillComponent,
     GoodShowComponent,
     GoodDetailComponent,
     HomeComponent,
