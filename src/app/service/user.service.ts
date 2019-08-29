@@ -1,10 +1,9 @@
 import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs';
-import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
+import {HttpClient, HttpParams} from '@angular/common/http';
 import {environment} from '../../environments/environment';
 import {User} from '../pojo/user';
 import {Cart} from '../pojo/cart';
-import {C} from '@angular/core/src/render3';
 import {CartItem} from '../pojo/cart-item';
 import {Success} from '../pojo/success';
 import {ContactInfo} from '../pojo/contact-info';

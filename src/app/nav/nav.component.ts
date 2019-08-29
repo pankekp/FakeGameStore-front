@@ -1,7 +1,7 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {User} from '../pojo/user';
 import {UserInfoShareService} from '../service/user-info-share.service';
-import {Observable, Observer, Subscription} from 'rxjs';
+import {Subscription} from 'rxjs';
 import {InfoStorageService} from '../service/info-storage.service';
 import {Router} from '@angular/router';
 
